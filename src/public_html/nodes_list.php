@@ -1,6 +1,6 @@
 <?php 
-	require_once 'config/motodConfig.php';
-	require_once 'classes/MotoRPC.php';
+	require_once '../moto/config/motodConfig.php';
+	require_once '../moto/classes/MotoRPC.php';
 	
 	$nodes = MotoRPC::getpeerinfo();
 	

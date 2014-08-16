@@ -1,7 +1,7 @@
 <?php
-	require_once 'config/motodConfig.php';
-	require_once 'classes/MotoRPC.php';
-	require_once 'classes/MotoHelpers.php';
+	require_once '../moto/config/motodConfig.php';
+	require_once '../moto/classes/MotoRPC.php';
+	require_once '../moto/classes/MotoHelpers.php';
 	
 	$network_info = MotoRPC::getinfo();
 	$network_coins = MotoHelpers::getcoinsvolume($network_info["blocks"]);
@@ -35,6 +35,12 @@
 		      				<input class="btn btn-default" type="submit" value="Go to transaction"/>
 		      			</span>
 		      		</form>
+	      			<form method="GET" action="./address.php" class="form-group input-group">
+		      			<input type="text" name="address" class="form-control" placeholder="Address">
+		      			<span class="input-group-btn">
+		      				<input class="btn btn-default" type="submit" value="Go to address"/>
+		      			</span>
+		      		</form>		      		
 				</div>
 			</div>
 </div>

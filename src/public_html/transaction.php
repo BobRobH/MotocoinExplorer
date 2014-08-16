@@ -1,9 +1,9 @@
 <?php
-	require_once 'config/motodConfig.php';
-	require_once 'classes/MotoRPC.php';
+	require_once '../moto/config/motodConfig.php';
+	require_once '../moto/classes/MotoRPC.php';
 
 	$tx_id = isset($_REQUEST['transaction']) ? $_REQUEST['transaction'] : die('Empty query parameters: transaction');
-	$raw_tx = MotoRPC::getrawtransaction ($tx_id);
+	$raw_tx = MotoRPC::getrawtransaction($tx_id);
 ?>
 <?php include 'parts/parts.header.php';?>
 <div class="row">
@@ -52,7 +52,7 @@
 					<?php } else { ?>
 						<tr>
 							<td>TX ID
-							<td><?=$txin["txid"]?>
+							<td><a href="transaction.php?transaction=<?=$txin["txid"]?>"><?=$txin["txid"]?></a>
 						<tr>
 							<td>TX Output
 							<td><?=$txin["vout"]?>
@@ -100,7 +100,7 @@
 				foreach ($txout["scriptPubKey"]["addresses"] as $key => $address); { ?>
 					<tr>
 						<td>Address #<?=$key?>
-						<td><?=$address?>
+						<td><a href="./address.php?address=<?=$address?>"><?=$address?></a>
 			<?php }} ?>						
 				</tbody>
 			</table>

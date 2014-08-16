@@ -1,6 +1,6 @@
 <?php 
-	require_once 'config/motodConfig.php';
-	require_once 'classes/MotoRPC.php';
+	require_once '../moto/config/motodConfig.php';
+	require_once '../moto/classes/MotoRPC.php';
 
 	$block_id = isset($_REQUEST['block_id']) ? $_REQUEST['block_id'] : null;
 	

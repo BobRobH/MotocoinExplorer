@@ -22,5 +22,6 @@
 		
 			<ul class="nav navbar-nav">
 		        <li><a href="./transactions.php">Transactions</a></li>
+		        <li><a href="./addresses_richest.php">Richest addresses</a></li>
 		    </ul>		    
 		</nav>

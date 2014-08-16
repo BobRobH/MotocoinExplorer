@@ -1,15 +1,15 @@
 <?php 
-	require_once 'config/motodConfig.php';
-	require_once 'classes/MotoRPC.php';
+	require_once '../moto/config/motodConfig.php';
+	require_once '../moto/classes/MotoRPC.php';
 
-	$block_id = isset($_REQUEST['block_id']) ? $_REQUEST['block_id'] : null;
+	$block_id = isset($_REQUEST['block_id']) ? $_REQUEST['block_id'] : -1;
 	$block_hash = isset($_REQUEST['block_hash']) ? $_REQUEST['block_hash'] : null;
 	
 	if ($block_hash) {
 		$raw_block = MotoRPC::getblock ($block_hash);
 	}
 	else 
-	if ($block_id) {	
+	if ($block_id>=0) {	
 		$block_hash = MotoRPC::getblockhash(intval ($block_id));
 		$raw_block = MotoRPC::getblock($block_hash);
 	}
@@ -31,6 +31,9 @@
             <tr>
                 <td>Block Version
                 <td><?=$raw_block["version"]?>
+            <tr>
+                <td>Nonce
+                <td><?=$raw_block["nonce"]?>
 		</table>
 	</div>
 	<div class="col-sm-6">
@@ -44,6 +47,9 @@
             <tr>
                 <td>Target time
                 <td><?=hexdec($raw_block["bits"])/250?>
+			<tr>
+                <td>Frames
+                <td><?=$raw_block["frames"]?>
 		</table>
 	</div>	
 </div>
@@ -55,6 +61,9 @@
 		<tr>
 			<td>Block Hash
 			<td><?=$raw_block["hash"]?>
+		<tr>
+			<td>Inputs
+			<td><?=wordwrap(implode(" ", $raw_block["inputs"]), 75, "<br>", TRUE)?>
 	</table>	
 </div>
 <div class="cl-sm-12">
